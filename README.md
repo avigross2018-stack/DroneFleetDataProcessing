@@ -29,8 +29,13 @@ string baseLocation,
 double flightHours,
 int batteryHealth,
 double maxRangeKm,
-int missionsCompleted,  
-string status,  
+int missionsCompleted,
+string status,
+
+Validations/ -- Avi Gross
+	
+Pipeline/ 
+
 
 | Validations/ -- Avi Gross |
 | ------------------------- |

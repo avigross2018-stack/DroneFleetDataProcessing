@@ -2,9 +2,9 @@
 
 using System.Text.Json;
 
-namespace DroneFleetDataProcessing.Storage
+namespace DroneFleetDataProcessing.src.Storage
 {
-    class JsonTool
+    class JsonTool 
     {
         public List<T> FromJson<T>(string path) //This return empty list in catch case
         {

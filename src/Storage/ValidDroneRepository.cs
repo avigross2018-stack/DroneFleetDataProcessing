@@ -1,6 +1,6 @@
 
 
-namespace DroneFleetDataProcessing.Storage
+namespace DroneFleetDataProcessing.src.Storage
 {
     public class ValidDroneRepository<T>
     {
