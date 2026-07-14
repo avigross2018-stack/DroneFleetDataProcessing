@@ -4,9 +4,9 @@ using System.Text.Json;
 
 namespace DroneFleetDataProcessing.src.Storage
 {
-    class JsonTool 
+    class JsonTool : IDataHandler
     {
-        public List<T> FromJson<T>(string path) //This return empty list in catch case
+        public List<T> Load<T>(string path) //This return empty list in catch case
         {
             try
             {
@@ -40,7 +40,7 @@ namespace DroneFleetDataProcessing.src.Storage
             return new List<T>();
             }
 
-        public void ToJson<T>(string path, List<T> objList)
+        public void Save<T>(string path, List<T> objList)
         {
             try
             {
