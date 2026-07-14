@@ -1,2 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using DroneFleetDataProcessing.src.Pipeline;
+
+namespace DroneFleetDataProcessing
+{
+    class Prgram
+    {   
+         
+
+        static void Main()
+        {
+            Console.WriteLine("gr");
+        }
+    }
+}

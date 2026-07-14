@@ -10,9 +10,14 @@ Storage/ -- Yoel (joeLevin42)
 Models/drone -- Avi Gross
 	drone.cs
 
-Pipeline/
+Pipeline/ -- Yoel (JoeLevin42)
 	Pipeline.cs
 
+Program.cs -- Yoel (JoeLevin42)
+	
+
+Statistics/ -- Yoel (joeLevin42) && Avi Gross
+	AnalyzeReport.cs
 
 
 | Validations/ -- Avi Gross |
