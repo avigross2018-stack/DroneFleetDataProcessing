@@ -1,6 +1,6 @@
 ## Drone Fleet Data Processing
 
-# Division of work in the team #
+# Division of work in the team
 
 Storage/ -- Yoel (joeLevin42)
 	JsonTool.cs
@@ -29,16 +29,14 @@ string baseLocation,
 double flightHours,
 int batteryHealth,
 double maxRangeKm,
-int missionsCompleted,
-string status,
+int missionsCompleted,  
+string status,  
 
-Validations/ -- Avi Gross
-	-
-	-
-	-
-	-
-
-
+| Validations/ -- Avi Gross |
+| ------------------------- |
+| -                         |
+| -                         |
+| -                         |
 
 ## JsonTool
 
@@ -72,6 +70,7 @@ Reads a JSON file from the given path and deserializes its content into a `List<
 Serializes a list of objects into a JSON file.
 
 Features:
+
 - Supports any object type using generics.
 - Creates readable formatted JSON using `WriteIndented = true`.
 - Handles common serialization and file-writing errors.
