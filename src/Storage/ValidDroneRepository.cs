@@ -17,5 +17,8 @@ namespace DroneFleetDataProcessing.src.Storage
             _items.Add(obj);
         }
 
+        public List<T> GetAllDrones()
+             => Items;
+
     }
 }

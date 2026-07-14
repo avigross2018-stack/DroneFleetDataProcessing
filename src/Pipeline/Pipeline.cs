@@ -1,6 +1,7 @@
 using DroneFleetDataProcessing.src.Storage;
 using DroneFleetDataProcessing.src.Models.Drones;
 using DroneFleetDataProcessing.src.Storage;
+using DroneFleetDataProcessing.src.Validations;
 
 namespace DroneFleetDataProcessing.src.Pipeline
 {
@@ -8,44 +9,46 @@ namespace DroneFleetDataProcessing.src.Pipeline
     {
         private IDataHandler dataHandler;
 
-        private DroneRepository<Drone> droneRepository;
-        private ValidDroneRepository<Drone> validDroneRepository;
-        //DroneValidator droneValidator = new DroneValidator();
+        private DroneRepository<Drone> _droneRepository;
+        private ValidDroneRepository<Drone> _validDroneRepository;
+        private DroneValidator _droneValidator;
 
 
         public Pipeline(IDataHandler dataHandler)
         {
             this.dataHandler = dataHandler;
 
-            droneRepository = new DroneRepository<Drone>();
-            validDroneRepository = new ValidDroneRepository<Drone>();
+            _droneRepository = new DroneRepository<Drone>();
+            _validDroneRepository = new ValidDroneRepository<Drone>();
+            _droneValidator = new DroneValidator();
+
         }
 
         public void loadFileToRepo(string path) //Mybe bool flag?
         {
             List<Drone> objList = dataHandler.Load<Drone>(path);
-            droneRepository.AddToRepo(objList); // this is overriding the exists object in the repo if exists
+            _droneRepository.AddToRepo(objList); // this is overriding the exists object in the repo if exists
         }
-        
-        //public void FilterAddValidRepo(List<Drone> drones)
-        //{
-        //    foreach(Drone obj in drones)
-        //    {
-        //        if (droneValidator.ValidateAll(obj))
-        //        {
-        //            AddToValidRepo(obj);
-        //        }
-        //    }
-        //}
+
+        public void FilterAddValidRepo(List<Drone> drones)
+        {
+            foreach (Drone obj in drones)
+            {
+                if (_droneValidator.ValidateAll(obj))
+                {
+                    AddToValidRepo(obj);
+                }
+            }
+        }
 
         public void AddToValidRepo(Drone obj)
         {   
-            validDroneRepository.AddToRepo(obj);
+            _validDroneRepository.AddToRepo(obj);
         }
 
-        public void ToOututFile(string path)
+        public void ToOutputFile(string path)
         {
-            List<Drone> allDrones = validDroneRepository.Items;
+            List<Drone> allDrones = _validDroneRepository.GetAllDrones();
 
             dataHandler.Save(path, allDrones);
         }

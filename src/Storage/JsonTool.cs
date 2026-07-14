@@ -18,24 +18,24 @@ namespace DroneFleetDataProcessing.src.Storage
 
             catch (JsonException ex)
             {
-                Console.WriteLine($"{ex.Message}"); //TODO reThorw?????
+                Console.WriteLine($"Error: {ex.Message}"); //TODO reThorw?????
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"{ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             catch (UnauthorizedAccessException ex)
             {
-                Console.WriteLine($"{ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             } 
             catch (IOException ex)
             {
-                Console.WriteLine($"{ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
             catch (NotSupportedException ex)
             {
-                Console.WriteLine($"{ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             return new List<T>();
             }
@@ -54,19 +54,19 @@ namespace DroneFleetDataProcessing.src.Storage
             }
             catch (IOException ex)
             {
-                Console.WriteLine($"Could not write file: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             catch (JsonException ex)
             {
-                Console.WriteLine($"JSON serialization error: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             catch (UnauthorizedAccessException ex)
             {
-                Console.WriteLine($"No permission to write file: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             catch (NotSupportedException ex)
             {
-                Console.WriteLine($"Unsupported type: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
     }
