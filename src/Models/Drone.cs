@@ -11,6 +11,7 @@ namespace DroneFleetDataProcessing.src.Models
         public string SerialNumber { get; set;}
         public string Model { get; set;}
         public string Category { get; set;}
-        
+        public string BaseLocation { get; set;}
+
     }
 }
