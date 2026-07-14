@@ -4,11 +4,18 @@ namespace DroneFleetDataProcessing.src.Storage
 {
     public class ValidDroneRepository<T>
     {
-        private List<T> items;
+        private List<T> _items;
+        public List<T> Items { get; }
 
         public ValidDroneRepository()
         {
-            items = new List<T>();
+            _items = new List<T>();
         }
+
+        public void AddToRepo(T obj)
+        {
+            _items.Add(obj);
+        }
+
     }
 }
