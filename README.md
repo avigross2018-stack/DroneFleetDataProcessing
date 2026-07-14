@@ -11,10 +11,8 @@ Models/drone -- Avi Gross
 	drone.cs 
 
 Validations/ -- Avi Gross
-	-
-	-
-	-
-	-
+	
+Pipeline/ 
 
 
 
