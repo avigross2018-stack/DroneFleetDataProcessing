@@ -1,14 +1,13 @@
-using DroneFleetDataProcessing.src.Pipeline;
+﻿using System;
+using DroneFleetDataProcessing.src.Paths;
 
 namespace DroneFleetDataProcessing
 {
-    class Prgram
-    {   
-         
-
-        static void Main()
+    class Program
+    {
+        static void Main(string[] args)
         {
-            Console.WriteLine("gr");
+
         }
     }
 }

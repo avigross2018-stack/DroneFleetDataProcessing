@@ -6,6 +6,9 @@ using DroneFleetDataProcessing.src.Models.Drones;
 
 namespace DroneFleetDataProcessing.src.Validations
 {
+    /// <summary>
+    /// This class validate all business roles of drone.
+    /// </summary>
     public class DroneValidator
     {
         public List<int> IdNums{ get; set;}
@@ -38,6 +41,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return false;
         }
 
+        // Validate unique ID and ID > 0.
         public bool ValidateId(Drone drone)
         {
             if(drone.Id <= 0)
@@ -52,6 +56,8 @@ namespace DroneFleetDataProcessing.src.Validations
             return false;
         }
 
+        // Validate SerialNumber if unique, not empty, 2 starting letters in uppercase,
+        // length is 7, last 4 characters are numbers.
         public bool ValidateSerialNumber(Drone drone)
         {
             if(!string.IsNullOrWhiteSpace(drone.SerialNumber) || 
@@ -71,6 +77,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true; 
         }
 
+        // Validate if model is valid input.
         public bool ValidateModel(Drone drone)
         {
             string[] models = ["Falcon-X", "Raven-M", "SkyEye-2", "CargoBee", "Storm-4", "Scout-Lite"];
@@ -79,6 +86,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if category is valid input. 
         public bool ValidateCategory(Drone drone)
         {
             string[] categories = ["Recon", "Patrol", "Mapping", "Delivery", "Search"];
@@ -87,6 +95,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        //Validate if base location is valid input.
         public bool ValidateBaseLocation(Drone drone)
         {
             string[] BaseLocations = ["North", "South", "Central", "East", "West"];
@@ -95,6 +104,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if flight hours is > 0 && < 2500.
         public bool ValidateFlightHours(Drone drone)
         {
             const int MIN_FLIGHT_HOURS = 0;
@@ -106,6 +116,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if battery health is > 0 && < 100.
         public bool ValidateBatteryHealth(Drone drone)
         {
             const int MIN_BATTERY_HEALTH = 0;
@@ -117,6 +128,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if max range km is > 1 && < 150.
         public bool ValidateMaxRangeKm(Drone drone)
         {
             const int MIN_MAX_RANGE = 1;
@@ -128,6 +140,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if flight hours is > 0 && < 2500.
         public bool ValidateMissionCompleted(Drone drone)
         {
             const int MIN_MISSIONS_COMPLETED = 0;
@@ -139,6 +152,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if status is valid input. 
         public bool ValidateStatus(Drone drone)
         {
             string[] statusList = ["Operational", "Maintenance", "Grounded", "Training"];
@@ -147,6 +161,7 @@ namespace DroneFleetDataProcessing.src.Validations
             return true;
         }
 
+        // Validate if status operational && battery health > 20.
         public bool ValidateOperateByHealth(Drone drone)
         {
             if(drone.Status == "Operational" && drone.BatteryHealth < 20)
