@@ -19,6 +19,7 @@ namespace DroneFleetDataProcessing.src.Storage
             catch (JsonException ex)
             {
                 Console.WriteLine($"Error: {ex.Message}"); //TODO reThorw?????
+                
             }
             catch (FileNotFoundException ex)
             {
