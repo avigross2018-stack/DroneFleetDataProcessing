@@ -56,6 +56,7 @@ namespace DroneFleetDataProcessing.src.Validations
         {
             if(drone.Id <= 0)
             {
+
                 return false;
             }
             if (!IdNums.Contains(drone.Id))
@@ -70,12 +71,12 @@ namespace DroneFleetDataProcessing.src.Validations
         // length is 7, last 4 characters are numbers.
         public bool ValidateSerialNumber(Drone drone)
         {
-            if(!string.IsNullOrWhiteSpace(drone.SerialNumber) || 
+            if(string.IsNullOrWhiteSpace(drone.SerialNumber) || 
                 drone.SerialNumber[0..2] != drone.SerialNumber[0..2].ToUpper() ||
-                drone.SerialNumber.Count() != 7 ||
+                drone.SerialNumber.Length != 7 ||
                 drone.SerialNumber[2] != '-' ||
                 !int.TryParse(drone.SerialNumber[3..], out _) ||
-                drone.SerialNumber[3..].Count() != 4)
+                drone.SerialNumber[3..].Length != 4)
             {
                 return false;
             }
@@ -110,7 +111,7 @@ namespace DroneFleetDataProcessing.src.Validations
         {
             string[] BaseLocations = ["North", "South", "Central", "East", "West"];
 
-            if(!BaseLocations.Contains(drone.Category)){return false;}
+            if(!BaseLocations.Contains(drone.BaseLocation)){return false;}
             return true;
         }
 
