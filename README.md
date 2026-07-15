@@ -3,27 +3,36 @@
 ## Team Work Division
 ## Team Work Division
 
-| Folder / File | Developer(s) |
-|----------------------------|-------------------------------|
-| **Program/** | Yoel (joeLevin42) & Avi Gross |
-| └── Program.cs | Yoel (joeLevin42) & Avi Gross |
-| **Pipeline/** | Yoel (joeLevin42) |
-| └── Pipeline.cs | Yoel (joeLevin42) |
-| **Storage/** | Yoel (joeLevin42) |
-| ├── IDataHandler.cs | Yoel (joeLevin42) |
-| ├── JsonTool.cs | Yoel (joeLevin42) |
-| ├── DroneRepository.cs | Yoel (joeLevin42) |
-| └── ValidDroneRepository.cs | Yoel (joeLevin42) |
-| **Models/** | Avi Gross |
-| └── Drone.cs | Avi Gross |
-| **Validations/** | Avi Gross |
-| └── DroneValidator.cs | Avi Gross |
-| **Paths/** | Avi Gross |
-| └── PathHolder.cs | Avi Gross |
-| **Statistics/** | Yoel (joeLevin42) & Avi Gross |
-| └── AnalyzeReport.cs | Yoel (joeLevin42) & Avi Gross |
+## Project Structure & Developer Responsibilities
 
----
+## Project Structure
+
+## Work Team Division
+
+Program  
+ └── Program.cs — Yoel (joeLevin42), Avi Gross
+
+Pipeline  
+ └── Pipeline.cs — Yoel (joeLevin42), Avi Gross
+
+Storage  
+ ├── IDataHandler.cs — Yoel (joeLevin42)  
+ ├── JsonTool.cs — Yoel (joeLevin42)  
+ ├── DroneRepository.cs — Yoel (joeLevin42)  
+ └── ValidDroneRepository.cs — Yoel (joeLevin42)
+
+Models  
+ └── Drone.cs — Avi Gross
+
+Validations  
+ └── DroneValidator.cs — Avi Gross
+
+Paths  
+ └── PathHolder.cs — Avi Gross
+
+Statistics  
+ └── AnalyzeReport.cs — Yoel (joeLevin42), Avi Gross
+
 ---
 
 # System Overview
@@ -363,7 +372,7 @@ Generate statistics
         │
         ▼
 Save cleaned JSON
-        │
+        │   
         ▼
 Program Ends
 ```
