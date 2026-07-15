@@ -5,15 +5,14 @@
 
 ## Project Structure & Developer Responsibilities
 
-## Project Structure
 
 ## Work Team Division
 
 Program  
- └── Program.cs — Yoel (joeLevin42), Avi Gross
+ └── Program.cs — Avi Gross
 
 Pipeline  
- └── Pipeline.cs — Yoel (joeLevin42), Avi Gross
+ └── Pipeline.cs — Yoel (joeLevin42)
 
 Storage  
  ├── IDataHandler.cs — Yoel (joeLevin42)  
@@ -32,6 +31,7 @@ Paths
 
 Statistics  
  └── AnalyzeReport.cs — Yoel (joeLevin42), Avi Gross
+
 
 ---
 
