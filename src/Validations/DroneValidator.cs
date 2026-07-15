@@ -11,6 +11,16 @@ namespace DroneFleetDataProcessing.src.Validations
     /// </summary>
     public class DroneValidator
     {
+        //CONST
+        private const int MIN_FLIGHT_HOURS = 0;
+        private const int MAX_FLIGHT_HOURS = 2500;
+        private const int MIN_BATTERY_HEALTH = 0;
+        private const int MAX_BATTERY_HEALTH = 100;
+        private const int MIN_MAX_RANGE = 1;
+        private const int MAX_MAX_RANGE = 150;
+        private const int MIN_MISSIONS_COMPLETED = 0;
+        private const int MAX_MISSIONS_COMPLETED = 5000;
+
         public List<int> IdNums{ get; set;}
         public List<string> SerialNumbers{ get; set;}
 
@@ -107,8 +117,6 @@ namespace DroneFleetDataProcessing.src.Validations
         // Validate if flight hours is > 0 && < 2500.
         public bool ValidateFlightHours(Drone drone)
         {
-            const int MIN_FLIGHT_HOURS = 0;
-            const int MAX_FLIGHT_HOURS = 2500;
             if(drone.FlightHours < MIN_FLIGHT_HOURS || drone.FlightHours > MAX_FLIGHT_HOURS)
             {
                 return false;
@@ -119,8 +127,6 @@ namespace DroneFleetDataProcessing.src.Validations
         // Validate if battery health is > 0 && < 100.
         public bool ValidateBatteryHealth(Drone drone)
         {
-            const int MIN_BATTERY_HEALTH = 0;
-            const int MAX_BATTERY_HEALTH = 100;
             if(drone.BatteryHealth < MIN_BATTERY_HEALTH || drone.BatteryHealth > MAX_BATTERY_HEALTH)
             {
                 return false;
@@ -131,8 +137,6 @@ namespace DroneFleetDataProcessing.src.Validations
         // Validate if max range km is > 1 && < 150.
         public bool ValidateMaxRangeKm(Drone drone)
         {
-            const int MIN_MAX_RANGE = 1;
-            const int MAX_MAX_RANGE = 150;
             if(drone.MaxRangeKm < MIN_MAX_RANGE || drone.MaxRangeKm > MAX_MAX_RANGE)
             {
                 return false;
@@ -143,8 +147,6 @@ namespace DroneFleetDataProcessing.src.Validations
         // Validate if flight hours is > 0 && < 2500.
         public bool ValidateMissionCompleted(Drone drone)
         {
-            const int MIN_MISSIONS_COMPLETED = 0;
-            const int MAX_MISSIONS_COMPLETED = 5000;
             if(drone.MissionsCompleted < MIN_MISSIONS_COMPLETED || drone.MissionsCompleted > MAX_MISSIONS_COMPLETED)
             {
                 return false;
