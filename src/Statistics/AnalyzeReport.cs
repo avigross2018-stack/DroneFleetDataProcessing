@@ -95,6 +95,16 @@ namespace DroneFleetDataProcessing.Statistics
             return filteredList;
         }
 
+        public string PrintAvgModelBatteryHealth(Dictionary<string, double> keyValue)
+        {
+            string final = "";
+            foreach (var item in keyValue)
+            {
+                final += $"{item.Key}: {item.Value}\n";
+            }
+            return final;
+        }
+
         public KeyValuePair<string, int> ModelWithMostMissionsCompleted()
         {
             var filteredList = _repository.GetAllDrones()
@@ -107,6 +117,12 @@ namespace DroneFleetDataProcessing.Statistics
             return filteredList;
         }
 
+        public string PrintModelWithMostMissionsCompleted(KeyValuePair<string, int> keyValue)
+        {
+            string final = $"Model: {keyValue.Key} \nTotal completed missions: {keyValue.Value}";
+            return final;
+        }
+
         public IEnumerable<KeyValuePair<string, double>> ThreeModelsHighestAvg()
         {
             var filteredList = _repository.GetAllDrones()
@@ -117,6 +133,17 @@ namespace DroneFleetDataProcessing.Statistics
                 .OrderByDescending(d => d.Value)
                 .Take(3);
             return filteredList;
+        }
+
+        public string PrintThreeModelsHighestAvg(IEnumerable<KeyValuePair<string, double>> keyValues)
+        {
+            string final = "";
+            foreach (var item in keyValues)
+            {
+                final += $"{item.Key}: {item.Value}";
+            }
+            return final;
+        }
         public string SummaryGetDroneByBase(Dictionary<string, int> BaseAndNumber)
         {
             string summary = "";
@@ -149,11 +176,18 @@ namespace DroneFleetDataProcessing.Statistics
                 AVAILABLE DRONE MODELS
                 {SummaryDistinctDronesModels(DistinctDronesModels())}
 
+                AVERAGE BATTERY HEALTH BY MODEL
+                {PrintAvgModelBatteryHealth(AvgModelBatteryHealth())}
 
+                MODEL WITH HIGHEST TOTAL COMPLETED MISSIONS
+                {PrintModelWithMostMissionsCompleted(ModelWithMostMissionsCompleted())}
+
+                SELECTED ADDITIONAL ANALYSIS
+                Analysis name: 3 Highest Average Flight hours
+                {PrintThreeModelsHighestAvg(ThreeModelsHighestAvg())}
                 """;
-       
 
-                
+            return totalSummaryReport;               
         }
     }
 
