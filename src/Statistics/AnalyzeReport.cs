@@ -76,5 +76,17 @@ namespace DroneFleetDataProcessing.Statistics
                 .FirstOrDefault();
             return filteredList;
         }
+
+        public IEnumerable<KeyValuePair<string, double>> ThreeModelsHighestAvg()
+        {
+            var filteredList = _repository.GetAllDrones()
+                .GroupBy(d => d.Model)
+                .Select(
+                    g => new KeyValuePair<string, double>(g.Key.ToString(), g.Average(d => d.FlightHours))
+                )
+                .OrderByDescending(d => d.Value)
+                .Take(3);
+            return filteredList;
+        }
     }
 }
