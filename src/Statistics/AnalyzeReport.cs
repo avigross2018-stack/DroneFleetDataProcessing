@@ -1,6 +1,8 @@
 using DroneFleetDataProcessing.src.Models.Drones;
 using DroneFleetDataProcessing.src.Storage;
 using DroneFleetDataProcessing.src.Models.Drones;
+using Microsoft.VisualBasic;
+using System.Text.RegularExpressions;
 
 namespace DroneFleetDataProcessing.Statistics
 {
@@ -82,6 +84,39 @@ namespace DroneFleetDataProcessing.Statistics
             return filteredList;
         }
 
+        public Dictionary<string,double> AvgModelBatteryHealth()
+        {
+            var filteredList = _repository.GetAllDrones()
+                .GroupBy(d => d.Model)
+                .ToDictionary(
+                g => g.Key,
+                g => g.Average(d => d.BatteryHealth)
+                );
+            return filteredList;
+        }
+
+        public KeyValuePair<string, int> ModelWithMostMissionsCompleted()
+        {
+            var filteredList = _repository.GetAllDrones()
+                .GroupBy(d => d.Model)
+                .Select(
+                g => new KeyValuePair<string, int>(g.Key, g.Sum(d => d.MissionsCompleted))
+                )
+                .OrderByDescending(kvp => kvp.Value)
+                .FirstOrDefault();
+            return filteredList;
+        }
+
+        public IEnumerable<KeyValuePair<string, double>> ThreeModelsHighestAvg()
+        {
+            var filteredList = _repository.GetAllDrones()
+                .GroupBy(d => d.Model)
+                .Select(
+                    g => new KeyValuePair<string, double>(g.Key.ToString(), g.Average(d => d.FlightHours))
+                )
+                .OrderByDescending(d => d.Value)
+                .Take(3);
+            return filteredList;
         public string SummaryGetDroneByBase(Dictionary<string, int> BaseAndNumber)
         {
             string summary = "";
