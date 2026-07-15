@@ -13,7 +13,7 @@ namespace DroneFleetDataProcessing
             Pipeline pipeline = new(jsonTool);
 
             pipeline.Run(
-                PathHolder.InputDronesMalformed(),
+                PathHolder.InputRawDroneJson(),
                 PathHolder.OutputDronesClean(),
                 PathHolder.outputAnalyze()
             );

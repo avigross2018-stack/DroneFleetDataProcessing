@@ -22,7 +22,7 @@ namespace DroneFleetDataProcessing.src.Statistics
         public List<Drone> NotOperationalDrones()
         {
             List<Drone> filteredList = _repository.GetAllDrones()
-                .Where(d => d.Status != "OPERATIONAL")
+                .Where(d => d.Status != "Operational")
                 .ToList();
             return filteredList;
         }
@@ -101,7 +101,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             string final = "";
             foreach (var item in keyValue)
             {
-                final += $"{item.Key}: {item.Value}\n";
+                final += $"{item.Key}: {item.Value:F2}\n";
             }
             return final;
         }
@@ -141,7 +141,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             string final = "";
             foreach (var item in keyValues)
             {
-                final += $"{item.Key}: {item.Value}";
+                final += $"{item.Key}: {item.Value:F2}\n";
             }
             return final;
         }
@@ -150,7 +150,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             string summary = "";
             foreach (KeyValuePair<string, int> item in BaseAndNumber)
             {
-                summary += $"{item.Key} | {item.Value}\n";
+                summary += $"{item.Key}: {item.Value}\n";
             }
 
             return summary;
@@ -192,6 +192,11 @@ namespace DroneFleetDataProcessing.src.Statistics
                 """;
 
             return totalSummaryReport;               
+        }
+
+        public void ToTextFile(string content, string path)
+        {
+            File.WriteAllText(path, content);
         }
     }
 
