@@ -40,6 +40,11 @@ namespace DroneFleetDataProcessing.src.Paths
 
         public static string InputDronesEmpty()
         {
+            return Path.Combine(TestDir, "drones_empty.json");
+        }
+
+        public static string InputDronesMalformed()
+        {
             return Path.Combine(TestDir, "drones_malformed.json");
         }
 
