@@ -46,17 +46,6 @@ namespace DroneFleetDataProcessing.src.Pipeline
                 if (_droneValidator.ValidateAll(obj))
                 {
                     AddToValidRepo(obj);
-                    Console.WriteLine(_droneValidator.ValidateId(obj));
-                    Console.WriteLine(_droneValidator.ValidateSerialNumber(obj));
-                    Console.WriteLine(_droneValidator.ValidateModel(obj));
-                    Console.WriteLine(_droneValidator.ValidateCategory(obj));
-                    Console.WriteLine(_droneValidator.ValidateBaseLocation(obj));
-                    Console.WriteLine(_droneValidator.ValidateFlightHours(obj));
-                    Console.WriteLine(_droneValidator.ValidateBatteryHealth(obj));
-                    Console.WriteLine(_droneValidator.ValidateMaxRangeKm(obj));
-                    Console.WriteLine(_droneValidator.ValidateMissionCompleted(obj));
-                    Console.WriteLine(_droneValidator.ValidateStatus(obj));
-                    Console.WriteLine(_droneValidator.ValidateOperateByHealth(obj));
                 }
 
             }
@@ -88,22 +77,28 @@ namespace DroneFleetDataProcessing.src.Pipeline
 
         public void Run(string inputPath , string outPath , string analyzePath)
         {
-            System.Console.WriteLine("=== Drone Fleet Data Processing System ===");
-            System.Console.WriteLine("Step 1: Reading raw data... Read records from raw file");
+            System.Console.WriteLine("=== Drone Fleet Data Processing System ===\n");
+            System.Console.WriteLine("Step 1: Reading raw data... Read records from raw file\n");
             LoadFileToRepo(inputPath); // This insert to the raw repo
 
             try{
-                System.Console.WriteLine("Step 2: Validating data and creating clean dataset... Valid records: Rejected records");
+                System.Console.WriteLine("Step 2: Validating data and creating clean dataset... Valid records: Rejected records\n");
                 FilterAddValidRepo(_droneRepository.GetAllDrones()); // This Filtering only the valid repo and insert to the ValidRepo
-                // System.Console.WriteLine(_analyzeReport.GetSummary());
                 CheckEmptyValidList();
             }
             catch(Exception ex)
             {
                 System.Console.WriteLine($"Error: {ex.Message}");
                 Environment.Exit(1);
-            }           
+            }
+            System.Console.WriteLine($"Step 3: Saving clean data... Clean data saved to: {outPath}\n");           
             ToOutputFile(outPath); // This stores the validated drones into output file
+            System.Console.WriteLine("Step 4: Reloading clean data... Loaded records from clean dataset\n");
+            System.Console.WriteLine("Step 5: Performing analysis... Analysis completed successfully\n");
+            string summery = _analyzeReport.GetSummary();
+            System.Console.WriteLine($"Step 6: Generating report... Report generated successfully: {analyzePath}\n");
+            _analyzeReport.ToTextFile(summery, analyzePath);
+            System.Console.WriteLine("=== Process completed successfully! ===");
         }
     }
 }

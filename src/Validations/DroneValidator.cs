@@ -56,6 +56,7 @@ namespace DroneFleetDataProcessing.src.Validations
         {
             if(drone.Id <= 0)
             {
+
                 return false;
             }
             if (!IdNums.Contains(drone.Id))
