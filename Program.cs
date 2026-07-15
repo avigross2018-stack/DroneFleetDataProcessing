@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+
 using DroneFleetDataProcessing.src.Paths;
 using DroneFleetDataProcessing.src.Pipeline;
 using DroneFleetDataProcessing.src.Storage;
@@ -7,6 +8,7 @@ namespace DroneFleetDataProcessing
 {
     class Program
     {
+        //Call to the pipeline and runs all the program
         static void Main(string[] args)
         {
             JsonTool jsonTool = new();

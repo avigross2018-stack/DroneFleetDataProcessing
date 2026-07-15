@@ -26,7 +26,9 @@ namespace DroneFleetDataProcessing.src.Pipeline
 
         }
 
-        public void LoadFileToRepo(string path) //Mybe bool flag?
+        //This fucntion call to the loader data and set the list of the objects
+        //into the raw data reository
+        public void LoadFileToRepo(string path) 
         {
             try{
                 List<Drone> objList = dataHandler.Load<Drone>(path);
@@ -39,6 +41,7 @@ namespace DroneFleetDataProcessing.src.Pipeline
             }
         }
 
+        //This methid filtering only the valid data and and adds them to the valid repo
         public void FilterAddValidRepo(List<Drone> drones)
         {
             foreach (Drone obj in drones)
@@ -50,19 +53,20 @@ namespace DroneFleetDataProcessing.src.Pipeline
 
             }
         }
-
+        //The adding to the valid repo object one by one
         public void AddToValidRepo(Drone obj)
         {   
             _validDroneRepository.AddToRepo(obj);
         }
 
+        //This fucntion saves the list object into file (Seralization)
         public void ToOutputFile(string path)
         {
             List<Drone> allDrones = _validDroneRepository.GetAllDrones();
 
             dataHandler.Save(path, allDrones);
         }
-
+        //This helper function check if the object list is empty if yes throws exception
         public void CheckEmptyValidList()
         {
 
@@ -74,7 +78,7 @@ namespace DroneFleetDataProcessing.src.Pipeline
             }
         }
 
-
+        //This method is the run flow of the whole program throught the pipeline
         public void Run(string inputPath , string outPath , string analyzePath)
         {
             System.Console.WriteLine("=== Drone Fleet Data Processing System ===\n");

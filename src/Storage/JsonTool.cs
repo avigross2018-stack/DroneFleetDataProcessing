@@ -6,6 +6,7 @@ namespace DroneFleetDataProcessing.src.Storage
 {
     class JsonTool : IDataHandler
     {
+        //This load from json file and Deserialize the json into objects
         public List<T> Load<T>(string path) //This return empty list in catch case
         {
             try
@@ -44,7 +45,7 @@ namespace DroneFleetDataProcessing.src.Storage
             }
             
 
-
+        //This Serialize the object and saving them into json
         public void Save<T>(string path, List<T> objList)
         {
             try

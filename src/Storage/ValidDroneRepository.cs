@@ -12,11 +12,12 @@ namespace DroneFleetDataProcessing.src.Storage
             _items = new List<T>();
         }
 
+        //Adding one object to repo
         public void AddToRepo(T obj)
         {
             _items.Add(obj);
         }
-
+        //Returns all the object list
         public List<T> GetAllDrones()
              => Items;
 

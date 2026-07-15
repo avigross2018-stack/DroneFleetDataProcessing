@@ -19,6 +19,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             _rawRepository = rawRepository;
         }
 
+        //Retuns the data after calculate
         public List<Drone> NotOperationalDrones()
         {
             List<Drone> filteredList = _repository.GetAllDrones()
@@ -26,7 +27,7 @@ namespace DroneFleetDataProcessing.src.Statistics
                 .ToList();
             return filteredList;
         }
-
+        //Handler helper function to that return the caluclated date into string 
         public string SummaryNotOperationalDrones(List<Drone> filteredDrones)
         {
             string summary = "";
@@ -36,7 +37,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             }
             return summary;
         }
-
+        //Retuns the data after calculate
         public List<Drone> FiveTopFlightHours()
         {
             var filteredList = _repository.GetAllDrones()
@@ -45,6 +46,7 @@ namespace DroneFleetDataProcessing.src.Statistics
                 .ToList();
             return filteredList;
         }
+        //Handler helper function to that return the caluclated date into string 
         public string SummaryFiveTopFlightHours(List<Drone> filteredDrones)
         {
             string summary = "";
@@ -54,7 +56,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             }
             return summary;
         }
-
+        //Retuns the data after calculate
         public List<string> DistinctDronesModels()
         {
             List<string> filteredList = _repository.GetAllDrones()
@@ -63,6 +65,7 @@ namespace DroneFleetDataProcessing.src.Statistics
                 .ToList();
             return filteredList;
         }
+        //Handler helper function to that return the caluclated date into string 
         public string SummaryDistinctDronesModels(List<string> models)
         {
             string modelsSummary = "";
@@ -72,7 +75,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             }
             return modelsSummary;
         }
-
+        //Retuns the data after calculate
         public Dictionary<string,int> GetDroneByBase()
         {
             var filteredList = _repository.GetAllDrones()
@@ -84,7 +87,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             return filteredList;
 
         }
-    
+        //Retuns the data after calculate
         public Dictionary<string,double> AvgModelBatteryHealth()
         {
             var filteredList = _repository.GetAllDrones()
@@ -95,7 +98,7 @@ namespace DroneFleetDataProcessing.src.Statistics
                 );
             return filteredList;
         }
-
+        //Handler helper function to that return the caluclated date into string 
         public string PrintAvgModelBatteryHealth(Dictionary<string, double> keyValue)
         {
             string final = "";
@@ -105,7 +108,7 @@ namespace DroneFleetDataProcessing.src.Statistics
             }
             return final;
         }
-
+        //Retuns the data after calculate
         public KeyValuePair<string, int> ModelWithMostMissionsCompleted()
         {
             var filteredList = _repository.GetAllDrones()
@@ -117,7 +120,7 @@ namespace DroneFleetDataProcessing.src.Statistics
                 .FirstOrDefault();
             return filteredList;
         }
-
+        //Handler helper function to that return the caluclated date into string 
         public string PrintModelWithMostMissionsCompleted(KeyValuePair<string, int> keyValue)
         {
             string final = $"Model: {keyValue.Key} \nTotal completed missions: {keyValue.Value}";
@@ -159,6 +162,7 @@ namespace DroneFleetDataProcessing.src.Statistics
 
         public string GetSummary()
         {
+            //Summary string calling to all the funtions
             string totalSummaryReport =
                 $"""
                 DRONE FLEET ANALYSIS REPORT
