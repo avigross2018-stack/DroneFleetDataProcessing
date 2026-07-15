@@ -95,9 +95,9 @@ namespace DroneFleetDataProcessing.src.Pipeline
             ToOutputFile(outPath); // This stores the validated drones into output file
             System.Console.WriteLine("Step 4: Reloading clean data... Loaded records from clean dataset\n");
             System.Console.WriteLine("Step 5: Performing analysis... Analysis completed successfully\n");
-            string summery = _analyzeReport.GetSummary();
+            string summary = _analyzeReport.GetSummary();
             System.Console.WriteLine($"Step 6: Generating report... Report generated successfully: {analyzePath}\n");
-            _analyzeReport.ToTextFile(summery, analyzePath);
+            _analyzeReport.ToTextFile(summary, analyzePath);
             System.Console.WriteLine("=== Process completed successfully! ===");
         }
     }
