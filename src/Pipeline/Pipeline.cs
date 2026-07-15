@@ -1,7 +1,6 @@
 using DroneFleetDataProcessing.src.Storage;
 using DroneFleetDataProcessing.src.Models.Drones;
 using DroneFleetDataProcessing.src.Validations;
-using DroneFleetDataProcessing.src.Statistics;
 
 namespace DroneFleetDataProcessing.src.Pipeline
 {
@@ -12,7 +11,6 @@ namespace DroneFleetDataProcessing.src.Pipeline
         private DroneRepository<Drone> _droneRepository;
         private ValidDroneRepository<Drone> _validDroneRepository;
         private DroneValidator _droneValidator;
-        private AnalyzeReport _analyzeReport;
 
 
         public Pipeline(IDataHandler dataHandler)
@@ -22,7 +20,6 @@ namespace DroneFleetDataProcessing.src.Pipeline
             _droneRepository = new DroneRepository<Drone>();
             _validDroneRepository = new ValidDroneRepository<Drone>();
             _droneValidator = new DroneValidator();
-            _analyzeReport = new(_validDroneRepository, _droneRepository);
 
         }
 
@@ -46,19 +43,7 @@ namespace DroneFleetDataProcessing.src.Pipeline
                 if (_droneValidator.ValidateAll(obj))
                 {
                     AddToValidRepo(obj);
-                    Console.WriteLine(_droneValidator.ValidateId(obj));
-                    Console.WriteLine(_droneValidator.ValidateSerialNumber(obj));
-                    Console.WriteLine(_droneValidator.ValidateModel(obj));
-                    Console.WriteLine(_droneValidator.ValidateCategory(obj));
-                    Console.WriteLine(_droneValidator.ValidateBaseLocation(obj));
-                    Console.WriteLine(_droneValidator.ValidateFlightHours(obj));
-                    Console.WriteLine(_droneValidator.ValidateBatteryHealth(obj));
-                    Console.WriteLine(_droneValidator.ValidateMaxRangeKm(obj));
-                    Console.WriteLine(_droneValidator.ValidateMissionCompleted(obj));
-                    Console.WriteLine(_droneValidator.ValidateStatus(obj));
-                    Console.WriteLine(_droneValidator.ValidateOperateByHealth(obj));
                 }
-
             }
         }
 
@@ -74,36 +59,20 @@ namespace DroneFleetDataProcessing.src.Pipeline
             dataHandler.Save(path, allDrones);
         }
 
-        public void CheckEmptyValidList()
-        {
-
-            if(_validDroneRepository.GetAllDrones().Count == 0)
-            {
-                System.Console.WriteLine("Valid records: 0");
-                System.Console.WriteLine($"Rejected records: {_droneRepository.GetAllDrones().Count}");
-                throw new ArgumentException("No valid records found for analysis!");
-            }
-        }
-
 
         public void Run(string inputPath , string outPath , string analyzePath)
         {
             System.Console.WriteLine("=== Drone Fleet Data Processing System ===");
             System.Console.WriteLine("Step 1: Reading raw data... Read records from raw file");
             LoadFileToRepo(inputPath); // This insert to the raw repo
+            FilterAddValidRepo(_droneRepository.GetAllDrones()); // This Filtering only the valid repo and insert to the ValidRepo
 
-            try{
-                System.Console.WriteLine("Step 2: Validating data and creating clean dataset... Valid records: Rejected records");
-                FilterAddValidRepo(_droneRepository.GetAllDrones()); // This Filtering only the valid repo and insert to the ValidRepo
-                System.Console.WriteLine(_analyzeReport.GetSummary());
-                // CheckEmptyValidList();
-            }
-            catch(Exception ex)
-            {
-                System.Console.WriteLine($"Error: {ex.Message}");
-                Environment.Exit(1);
-            }           
+            //Need to summarize here 22
+
             ToOutputFile(outPath); // This stores the validated drones into output file
+
+
+
         }
     }
 }
