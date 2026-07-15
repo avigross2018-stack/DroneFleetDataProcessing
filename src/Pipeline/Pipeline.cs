@@ -1,6 +1,5 @@
 using DroneFleetDataProcessing.src.Storage;
 using DroneFleetDataProcessing.src.Models.Drones;
-using DroneFleetDataProcessing.src.Storage;
 using DroneFleetDataProcessing.src.Validations;
 
 namespace DroneFleetDataProcessing.src.Pipeline
@@ -58,8 +57,11 @@ namespace DroneFleetDataProcessing.src.Pipeline
         {
             LoadFileToRepo(inputPath); // This insert to the raw repo
             FilterAddValidRepo(_droneRepository.GetAllItems()); // This Filtering only the valid repo and insert to the ValidRepo
-            //Need to summarize here 
+
+            //Need to summarize here 22
+
             ToOutputFile(outPath); // This stores the validated drones into output file
+
 
 
         }
