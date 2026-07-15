@@ -12,13 +12,13 @@ namespace DroneFleetDataProcessing.src.Storage
             {
                 string json = File.ReadAllText(path);
                 List<T> objList = JsonSerializer.Deserialize<List<T>>(json);
-                if(objList is null){throw new NullReferenceException();}
+                if (objList is null) { throw new NullReferenceException(); }
                 return objList;
             }
 
-            catch (JsonException ex)
+            catch (JsonException ex) 
             {
-                throw;
+            throw;           
             }
             catch (FileNotFoundException ex)
             {
@@ -42,6 +42,8 @@ namespace DroneFleetDataProcessing.src.Storage
                 throw;
             }
             }
+            
+
 
         public void Save<T>(string path, List<T> objList)
         {
