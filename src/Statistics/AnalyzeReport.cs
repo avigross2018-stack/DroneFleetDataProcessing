@@ -82,7 +82,11 @@ namespace DroneFleetDataProcessing.Statistics
                 group => group.Count()
                 );
             return filteredList;
+
         }
+    
+        
+        
 
         public Dictionary<string,double> AvgModelBatteryHealth()
         {
@@ -175,6 +179,9 @@ namespace DroneFleetDataProcessing.Statistics
 
                 AVAILABLE DRONE MODELS
                 {SummaryDistinctDronesModels(DistinctDronesModels())}
+
+                DRONES BY BASE
+                {SummaryGetDroneByBase(GetDroneByBase())}
 
                 AVERAGE BATTERY HEALTH BY MODEL
                 {PrintAvgModelBatteryHealth(AvgModelBatteryHealth())}
