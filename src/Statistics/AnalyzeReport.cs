@@ -82,7 +82,11 @@ namespace DroneFleetDataProcessing.Statistics
                 group => group.Count()
                 );
             return filteredList;
+
         }
+    
+        
+        
 
         public Dictionary<string,double> AvgModelBatteryHealth()
         {
@@ -117,6 +121,7 @@ namespace DroneFleetDataProcessing.Statistics
                 .OrderByDescending(d => d.Value)
                 .Take(3);
             return filteredList;
+        }
         public string SummaryGetDroneByBase(Dictionary<string, int> BaseAndNumber)
         {
             string summary = "";
@@ -148,6 +153,10 @@ namespace DroneFleetDataProcessing.Statistics
 
                 AVAILABLE DRONE MODELS
                 {SummaryDistinctDronesModels(DistinctDronesModels())}
+
+                DRONES BY BASE
+                {SummaryGetDroneByBase(GetDroneByBase())}
+
 
 
                 """;
