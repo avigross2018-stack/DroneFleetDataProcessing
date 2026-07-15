@@ -56,7 +56,7 @@ namespace DroneFleetDataProcessing.src.Pipeline
         public void Run(string inputPath , string outPath , string analyzePath)
         {
             LoadFileToRepo(inputPath); // This insert to the raw repo
-            FilterAddValidRepo(_droneRepository.GetAllItems()); // This Filtering only the valid repo and insert to the ValidRepo
+            FilterAddValidRepo(_droneRepository.GetAllDrones()); // This Filtering only the valid repo and insert to the ValidRepo
 
             //Need to summarize here 22
 
