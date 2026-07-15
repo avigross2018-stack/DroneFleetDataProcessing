@@ -25,8 +25,15 @@ namespace DroneFleetDataProcessing.src.Pipeline
 
         public void LoadFileToRepo(string path) //Mybe bool flag?
         {
-            List<Drone> objList = dataHandler.Load<Drone>(path);
-            _droneRepository.AddToRepo(objList); // this is overriding the exists object in the repo if exists
+            try{
+                List<Drone> objList = dataHandler.Load<Drone>(path);
+                _droneRepository.AddToRepo(objList); // this is overriding the exists object in the repo if exists
+            }
+            catch(Exception ex)
+            {
+                System.Console.WriteLine($"Error: {ex.Message}");
+                Environment.Exit(1);
+            }
         }
 
         public void FilterAddValidRepo(List<Drone> drones)
@@ -55,6 +62,8 @@ namespace DroneFleetDataProcessing.src.Pipeline
 
         public void Run(string inputPath , string outPath , string analyzePath)
         {
+            System.Console.WriteLine("=== Drone Fleet Data Processing System ===");
+            System.Console.WriteLine("Step 1: Reading raw data... Read records from raw file");
             LoadFileToRepo(inputPath); // This insert to the raw repo
             FilterAddValidRepo(_droneRepository.GetAllDrones()); // This Filtering only the valid repo and insert to the ValidRepo
 

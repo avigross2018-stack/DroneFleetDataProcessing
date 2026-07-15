@@ -12,32 +12,35 @@ namespace DroneFleetDataProcessing.src.Storage
             {
                 string json = File.ReadAllText(path);
                 List<T> objList = JsonSerializer.Deserialize<List<T>>(json);
-
+                if(objList is null){throw new NullReferenceException();}
                 return objList;
             }
 
             catch (JsonException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}"); //TODO reThorw?????
+                throw;
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
             catch (UnauthorizedAccessException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             } 
             catch (IOException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
 
             catch (NotSupportedException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
-            return new List<T>();
+            catch(NullReferenceException ex)
+            {
+                throw;
+            }
             }
 
         public void Save<T>(string path, List<T> objList)
@@ -54,19 +57,19 @@ namespace DroneFleetDataProcessing.src.Storage
             }
             catch (IOException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
             catch (JsonException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
             catch (UnauthorizedAccessException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
             catch (NotSupportedException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                throw;
             }
         }
     }

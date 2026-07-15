@@ -5,7 +5,7 @@ namespace DroneFleetDataProcessing.src.Storage
     public class ValidDroneRepository<T>
     {
         private List<T> _items;
-        public List<T> Items { get=> Items; }
+        public List<T> Items { get=> _items; }
 
         public ValidDroneRepository()
         {
