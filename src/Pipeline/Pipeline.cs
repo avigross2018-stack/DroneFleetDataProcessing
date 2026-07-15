@@ -95,8 +95,8 @@ namespace DroneFleetDataProcessing.src.Pipeline
             try{
                 System.Console.WriteLine("Step 2: Validating data and creating clean dataset... Valid records: Rejected records");
                 FilterAddValidRepo(_droneRepository.GetAllDrones()); // This Filtering only the valid repo and insert to the ValidRepo
-                System.Console.WriteLine(_analyzeReport.GetSummary());
-                // CheckEmptyValidList();
+                // System.Console.WriteLine(_analyzeReport.GetSummary());
+                CheckEmptyValidList();
             }
             catch(Exception ex)
             {
