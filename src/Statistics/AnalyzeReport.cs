@@ -4,7 +4,7 @@ using DroneFleetDataProcessing.src.Models.Drones;
 using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
-namespace DroneFleetDataProcessing.Statistics
+namespace DroneFleetDataProcessing.src.Statistics
 {
     public class AnalyzeReport
     {
