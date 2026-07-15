@@ -85,9 +85,6 @@ namespace DroneFleetDataProcessing.Statistics
 
         }
     
-        
-        
-
         public Dictionary<string,double> AvgModelBatteryHealth()
         {
             var filteredList = _repository.GetAllDrones()
@@ -189,7 +186,7 @@ namespace DroneFleetDataProcessing.Statistics
                 MODEL WITH HIGHEST TOTAL COMPLETED MISSIONS
                 {PrintModelWithMostMissionsCompleted(ModelWithMostMissionsCompleted())}
 
-                SELECTED ADDITIONAL ANALYSIS
+                SELECTED ADDITIONAL ANALYSIS 
                 Analysis name: 3 Highest Average Flight hours
                 {PrintThreeModelsHighestAvg(ThreeModelsHighestAvg())}
                 """;
