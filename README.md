@@ -1,7 +1,7 @@
 ﻿# Drone Fleet Data Processing
 
 ## Team Work Division
-## Team Work Division
+
 
 ## Project Structure & Developer Responsibilities
 
